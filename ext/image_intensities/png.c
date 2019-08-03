@@ -6,6 +6,11 @@
 
 #include "definitions.h"
 
+static void user_warning_fn(png_structp png_ptr, png_const_charp warning_msg)
+{
+    // discard
+}
+
 raster_data read_png_file(const char *file_name)
 {
     FILE *fp = NULL;
@@ -21,7 +26,7 @@ raster_data read_png_file(const char *file_name)
 
     // These lines will not fail under any usual circumstances, so it's okay
     // to leak the png ptr if the info ptr can't be allocated
-    png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+    png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, user_warning_fn);
     png_infop info_ptr = png_create_info_struct(png_ptr);
 
     if (!png_ptr || !info_ptr) {
