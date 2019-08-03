@@ -43,14 +43,14 @@ raster_data read_png_file(const char *file_name)
     data.width = png_get_image_width(png_ptr, info_ptr);
     data.height = png_get_image_height(png_ptr, info_ptr);
 
-    data.pixels = malloc(png_get_rowbytes(png_ptr, info_ptr) * data.height);
-
     png_set_strip_16(png_ptr);
     png_set_strip_alpha(png_ptr);
     png_set_gray_to_rgb(png_ptr);
     png_set_expand(png_ptr);
     png_set_interlace_handling(png_ptr);
     png_read_update_info(png_ptr, info_ptr);
+
+    data.pixels = malloc(png_get_rowbytes(png_ptr, info_ptr) * data.height);
 
     row_pointers = png_malloc(png_ptr, data.height * sizeof(png_bytep));
     for (size_t i = 0; i < data.height; ++i)

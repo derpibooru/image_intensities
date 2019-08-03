@@ -1,7 +1,7 @@
-#ifndef _JPEG_H
-#define _JPEG_H
+#ifndef _DEFINITIONS_H
+#define _DEFINITIONS_H
 
-#include "definitions.h"
+#include <stdint.h>
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
