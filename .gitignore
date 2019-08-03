@@ -1,0 +1,7 @@
+# Extconf
+*.o
+*.so
+mkmf.log
+
+# Rubygems
+*.gem

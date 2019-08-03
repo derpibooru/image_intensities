@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+namespace :image_intensities do
+  desc 'Compile libimage_intensities'
+  task :compile do
+    lib_path = if Dir.pwd.end_with?('/ext')
+      'image_intensities'
+    else
+      'ext/image_intensities'
+    end
+
+    cd lib_path do
+      make_program = ENV['MAKE'] || 'make'
+      sh "#{make_program} lib/libimage_intensities.so"
+    end
+  end
+end
+
+task default: 'image_intensities:compile'
