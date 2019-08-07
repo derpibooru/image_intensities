@@ -70,7 +70,7 @@ all: lib/libimage_intensities.so
 
 lib/libimage_intensities.so: definitions.h intensities.c png.c jpeg.c turbojpeg/libturbojpeg.a
 	$(MKDIR) -p lib
-	$(CC) intensities.c png.c jpeg.c turbojpeg/libturbojpeg.a -fPIC -shared -o lib/libimage_intensities.so -lpng
+	$(CC) intensities.c png.c jpeg.c turbojpeg/libturbojpeg.a -Iturbojpeg -fPIC -shared -o lib/libimage_intensities.so -lpng
 
 turbojpeg/libturbojpeg.a: $(JPEG_OBJECTS)
 	$(AR) rcs $@ $^
