@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.summary       = ''
   s.author        = 'Liam P. White'
   s.files         = `git ls-files`.split("\n")
-  s.license       = 'MIT'
+  s.license       = 'BSD'
   s.extensions    = %w[ext/Rakefile]
   s.require_paths = %w[lib]
 
