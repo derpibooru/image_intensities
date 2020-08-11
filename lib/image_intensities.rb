@@ -4,7 +4,8 @@ require 'magic'
 
 module ImageIntensities
   def self.file(path)
-    case magic.file(path)
+    mime = magic.file(path)
+    case mime
     when 'image/png'
       ins = Native.png_intensities(path)
       raise 'Processing error' if ins[:error] != 0
